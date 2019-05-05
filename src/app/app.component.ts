@@ -4,7 +4,7 @@ import { Component } from "@angular/core";
 @Component({
   //derective name
   selector: 'pm-root',
-  //template being used by this component
+  //template (html) being used by this component, can be inline or refrence an html page
   // template: `<div><h1>{{pageTitle}}</h1>
   //             <div> My first Component</div>
   //             </div>`

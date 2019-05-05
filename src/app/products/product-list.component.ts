@@ -6,6 +6,10 @@ import { Component } from "@angular/core";
 })
 export class ProductListComponent {
   pageTitle: string = "Product List";
+  imageWidth: number = 50;
+  imageMargin: number = 2;
+  showImage: boolean = false;
+  listFilter: string = 'cart';
   products: any[] = [
     {
       "productId": 1,
@@ -15,7 +19,7 @@ export class ProductListComponent {
       "description": "Leaf rake with 48-inch wooden handle.",
       "price": 19.95,
       "starRating": 3.2,
-      "imageUrl": "https://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
+      "imageUrl": "https://lh3.googleusercontent.com/XPRvGXcCi_H_g466WNoIvQpDEcP4iatFW_WZgSer0QAFV3EhUnakaKPUtKUI3-6BhEIqBWLS9dZh4MDVkwcw6aSHIrGa0BDIEfMxm-lLlHN1Q-Gb4o4h-DwzQvRjA7OLHmId1YaNXlD3UFm8Y0QlFg8i9GzPAVEjYpYGQNFvPLhdHacMgT3Rkjf2Qt4R0CrwINAGh0H3JDjpR_CCKKUuyIcoI5wP6WWILps4YRFsAgek-VSIHbcJkQF0wCDsCqs6NVUAMMVUdp97WXEKIgwqM4s-G_PDY4iRlGNpXo2lstGT6bOP2XfbOsGFrgJpEduO8dXqk3ZIBFsm5A_K6V1iz0dnHSEbBFQYexlT63D3-35jZyBcAwWJL-hvGOdFoLhgiOILbhOWG-mkyPQjvILhpqs7AX5fwfYQJCbbY-62SGmpa2l_HZgsmkZrRYvPwPnBXshr_oHm0Lof3RbiPFfdZY1eesphZ1_02Il-Zptn9HLEJpS5EtbBt6lv3Vl4NWGusbXNHqSpNVr2xdasM_-lywLF_h4hCx9diiUQXDZd4uYLLEPDqi7mCIbykfGjcfe5eXIxb40JIgMGDNL_ZM0Plby0LbDytSHcKHkb5vzpNekZUXn4Ju--zPL0KuQiDiwlHtd5O-qxfNn3k6LkdZKwT36K3C2LglQ=w1121-h841-no"
     },
     {
       "productId": 2,
@@ -37,5 +41,10 @@ export class ProductListComponent {
       "starRating": 4.8,
       "imageUrl": "https://openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png"
     }
-  ]
+  ];
+
+
+  toggleImage():void {
+    this.showImage = !this.showImage;
+  }
 }
