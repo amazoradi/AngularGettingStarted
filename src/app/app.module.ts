@@ -5,6 +5,7 @@ import { FormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list.component';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
+import { StarComponent } from './shared/star.component';
 
 
 //id class as a module using the ngmodule decorator and pass in meta data
@@ -13,7 +14,8 @@ import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
   declarations: [
     AppComponent,
     ProductListComponent,
-    ConvertToSpacesPipe 
+    ConvertToSpacesPipe,
+    StarComponent
   ],
   //external modules we want avialiable to all componentns of this module
   imports: [

@@ -48,7 +48,8 @@
           <td>{{ product.releaseDate }}</td>
           <td>{{ product.price | currency }}</td> 
           <!-- currency: "USD": "symbol" : "1.2-2" this the explicit way to use currency pipe with parameters -->
-          <td>{{ product.starRating }}</td>
+          <td><pm-star [rating]='product.starRating'
+                      (ratingClicked)='onRatingClicked($event)'></pm-star></td>
         </tr>
       </tbody>
     </table>
