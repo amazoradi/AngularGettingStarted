@@ -7,17 +7,18 @@ import { ProductService } from "./product.service";
   templateUrl: "./product-list.component.html",
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit{
+export class ProductListComponent implements OnInit {
   pageTitle: string = "Product List";
   imageWidth: number = 50;
   imageMargin: number = 2;
   showImage: boolean = false;
+  errorMessage: string;
   // listFilter: string = 'cart';
   _listFilter: string;
-  get listFilter():string {
+  get listFilter(): string {
     return this._listFilter;
   }
-  set listFilter(value:string){
+  set listFilter(value: string) {
     this._listFilter = value;
     this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
   }
@@ -28,22 +29,29 @@ export class ProductListComponent implements OnInit{
   constructor(private productService: ProductService) {
   }
 
-  toggleImage():void {
+  toggleImage(): void {
     this.showImage = !this.showImage;
   }
 
-  ngOnInit(): void {
-    this.products = this.productService.getProducts();
-    this.filteredProducts = this.products;
-  }
 
+
+  //http request-> encapsulate in a service (product.service), then expose an observable for use any class that needs that data. THe class subscribes to the observable and waits for data/notification
+  ngOnInit(): void {
+    this.productService.getProducts().subscribe(products => {
+      this.products = products
+      this.filteredProducts = this.products;
+    },
+      error => this.errorMessage = <any>error);
+  };
+
+  
   performFilter(filterBy: string): IProduct[] {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.products.filter((product: IProduct) => 
+    return this.products.filter((product: IProduct) =>
       product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
-  onRatingClicked(message:string): void {
+  onRatingClicked(message: string): void {
     this.pageTitle = "Product List: " + message;
   }
 }
